@@ -1,0 +1,44 @@
+.admin-dashboard {
+  width: 100%;
+}
+
+.admin-dashboard h1 {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.dashboard-subtitle {
+  color: #475569;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+}
+
+.dashboard-card h3 {
+  font-size: 15px;
+  color: #334155;
+  margin-bottom: 12px;
+}
+
+.card-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2563eb;
+}

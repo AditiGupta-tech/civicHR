@@ -1,0 +1,43 @@
+.attendance-page h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.attendance-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.attendance-filters input,
+.attendance-filters select {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.attendance-filters button {
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.attendance-table th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}

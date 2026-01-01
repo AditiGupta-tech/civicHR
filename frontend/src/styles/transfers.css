@@ -1,0 +1,46 @@
+.transfer-page h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.transfer-table-container {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.transfer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transfer-table th,
+.transfer-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.transfer-table th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+.approve-btn {
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
