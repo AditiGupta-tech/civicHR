@@ -1,52 +1,82 @@
-import "../../styles/attendance.css";
+import { useState } from "react";
+import "../../styles/Attendance.css";
+
 const Attendance = () => {
+  const [records] = useState([
+    {
+      id: 1,
+      empId: "EMP001",
+      name: "Rahul Sharma",
+      date: "2025-01-10",
+      checkIn: "09:05 AM",
+      checkOut: "05:45 PM",
+      status: "Present",
+      method: "Face + GPS",
+    },
+    {
+      id: 2,
+      empId: "EMP002",
+      name: "Anita Verma",
+      date: "2025-01-10",
+      checkIn: "09:40 AM",
+      checkOut: "05:30 PM",
+      status: "Late",
+      method: "QR",
+    },
+    {
+      id: 3,
+      empId: "EMP003",
+      name: "Sunil Kumar",
+      date: "2025-01-10",
+      checkIn: "-",
+      checkOut: "-",
+      status: "Absent",
+      method: "-",
+    },
+  ]);
+
+  const getStatusClass = (status) => {
+    if (status === "Present") return "status-present";
+    if (status === "Late") return "status-late";
+    return "status-absent";
+  };
+
   return (
-    <div className="attendance-page">
-  <h1>Attendance Management</h1>
+    <div className="attendance-container">
+      <h1 className="attendance-title">Attendance Overview</h1>
 
-  <div className="attendance-filters">
-    <input type="date" />
-    <select>
-      <option>All Status</option>
-      <option>Present</option>
-      <option>Absent</option>
-      <option>On Leave</option>
-    </select>
-    <button>Filter</button>
-  </div>
-  <table className="attendance-table">
-  <thead>
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Check-in Method</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>EMP001</td>
-      <td>Rahul Sharma</td>
-      <td>Present</td>
-      <td>Face Recognition</td>
-    </tr>
-    <tr>
-      <td>EMP002</td>
-      <td>Anita Verma</td>
-      <td>On Leave</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>EMP003</td>
-      <td>Sunil Kumar</td>
-      <td>Absent</td>
-      <td>-</td>
-    </tr>
-  </tbody>
-</table>
+      <div className="attendance-card">
+        <table className="attendance-table">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Check In</th>
+              <th>Check Out</th>
+              <th>Status</th>
+              <th>Method</th>
+            </tr>
+          </thead>
 
-</div>
-
+          <tbody>
+            {records.map((rec) => (
+              <tr key={rec.id}>
+                <td>{rec.empId}</td>
+                <td>{rec.name}</td>
+                <td>{rec.date}</td>
+                <td>{rec.checkIn}</td>
+                <td>{rec.checkOut}</td>
+                <td className={getStatusClass(rec.status)}>
+                  {rec.status}
+                </td>
+                <td>{rec.method}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

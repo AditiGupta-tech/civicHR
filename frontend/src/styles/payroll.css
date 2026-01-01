@@ -34,3 +34,36 @@
   border-radius: 6px;
   cursor: pointer;
 }
+.payroll-container {
+  background: #f8fafc;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.payroll-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.payroll-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.payroll-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payroll-table th {
+  background: #f1f5f9;
+  padding: 12px;
+}
+
+.payroll-table td {
+  padding: 12px;
+  border-top: 1px solid #e2e8f0;
+}

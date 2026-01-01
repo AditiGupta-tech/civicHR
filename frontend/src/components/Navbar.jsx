@@ -1,5 +1,9 @@
 const Navbar = () => {
-  return <div className="navbar">MCD SmartHR – Admin</div>;
+  return (
+    <div className="navbar">
+      <h1 className="navbar-title">CivicHR – Admin</h1>
+    </div>
+  );
 };
 
 export default Navbar;

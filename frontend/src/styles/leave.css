@@ -1,46 +1,54 @@
-.leave-page h1 {
-  font-size: 26px;
+.leave-container {
+  background: #f8fafc;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.leave-title {
+  font-size: 28px;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
-.leave-table-container {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
+.leave-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-.leave-table {
+.table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.leave-table th,
-.leave-table td {
+.table th {
+  background: #f1f5f9;
   padding: 12px;
-  border-bottom: 1px solid #e2e8f0;
   text-align: left;
-}
-
-.leave-table th {
-  background-color: #f1f5f9;
   font-weight: 600;
 }
 
-.approve-btn {
-  background-color: #16a34a;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  margin-right: 6px;
-  border-radius: 6px;
-  cursor: pointer;
+.table td {
+  padding: 12px;
+  border-top: 1px solid #e2e8f0;
 }
 
-.reject-btn {
+.btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.btn.approve {
+  background-color: #16a34a;
+  color: white;
+}
+
+.btn.reject {
   background-color: #dc2626;
   color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import Analytics from "./pages/admin/Analytics";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Attendance from "./pages/admin/Attendance";
@@ -16,6 +16,8 @@ const App = () => {
       {/* Admin Routes */}
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="analytics" element={<Analytics />} />
+
         <Route path="attendance" element={<Attendance />} />
         <Route path="leave" element={<Leave />} />
         <Route path="transfers" element={<Transfers />} />

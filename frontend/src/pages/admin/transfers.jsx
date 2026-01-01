@@ -1,61 +1,83 @@
-import "../../styles/transfers.css";
+import { useState } from "react";
+import "../../styles/Transfers.css";
+
 const Transfers = () => {
+  const [requests, setRequests] = useState([
+    {
+      id: 1,
+      empId: "EMP021",
+      name: "Amit Singh",
+      from: "Zone A",
+      to: "Zone C",
+      status: "Pending",
+    },
+    {
+      id: 2,
+      empId: "EMP034",
+      name: "Neha Verma",
+      from: "Zone B",
+      to: "Zone D",
+      status: "Approved",
+    },
+  ]);
+
+  const updateStatus = (id, status) => {
+    setRequests(
+      requests.map(r =>
+        r.id === id ? { ...r, status } : r
+      )
+    );
+  };
+
   return (
-   <div className="transfer-page">
-  <h1>Transfer Management</h1>
+    <div className="transfer-container">
+      <h1 className="transfer-title">Transfer Management</h1>
 
-  <div className="transfer-table-container">
-    <table className="transfer-table">
-      <thead>
-        <tr>
-          <th>Employee ID</th>
-          <th>Name</th>
-          <th>Current Department</th>
-          <th>New Department</th>
-          <th>Location</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
+      <div className="transfer-card">
+        <table className="transfer-table">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-      <tbody>
-        <tr>
-          <td>EMP001</td>
-          <td>Rahul Sharma</td>
-          <td>Sanitation</td>
-          <td>Waste Management</td>
-          <td>North Zone</td>
-          <td>Pending</td>
-          <td>
-            <button className="approve-btn">Approve</button>
-            <button className="reject-btn">Reject</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td>EMP002</td>
-          <td>Anita Verma</td>
-          <td>Clerical</td>
-          <td>Accounts</td>
-          <td>Central Zone</td>
-          <td>Approved</td>
-          <td>-</td>
-        </tr>
-
-        <tr>
-          <td>EMP003</td>
-          <td>Sunil Kumar</td>
-          <td>Maintenance</td>
-          <td>Electrical</td>
-          <td>South Zone</td>
-          <td>Rejected</td>
-          <td>-</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
+          <tbody>
+            {requests.map(req => (
+              <tr key={req.id}>
+                <td>{req.empId}</td>
+                <td>{req.name}</td>
+                <td>{req.from}</td>
+                <td>{req.to}</td>
+                <td>{req.status}</td>
+                <td>
+                  {req.status === "Pending" ? (
+                    <>
+                      <button
+                        className="btn approve"
+                        onClick={() => updateStatus(req.id, "Approved")}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        className="btn reject"
+                        onClick={() => updateStatus(req.id, "Rejected")}
+                      >
+                        Reject
+                      </button>
+                    </>
+                  ) : "-"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 
