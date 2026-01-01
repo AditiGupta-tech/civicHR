@@ -29,11 +29,6 @@ const LandingPage = () => {
   return (
     <div style={styles.pageWrapper}>
       
-      {/* --- BACKROUND ELEMENTS TO REDUCE WHITE SPACE --- */}
-      <div style={styles.bgBlob1}></div>
-      <div style={styles.bgBlob2}></div>
-      <div style={styles.bgGrid}></div>
-
       {/* 1. NAVBAR */}
       <nav style={styles.navStyle}>
         <div style={styles.navContainer}>
@@ -50,6 +45,10 @@ const LandingPage = () => {
 
       {/* 2. HERO SECTION */}
       <section style={styles.heroSection}>
+        {/* Decorative Background Glows */}
+        <div style={styles.bgGlowLeft}></div>
+        <div style={styles.bgGlowRight}></div>
+
         <div style={styles.heroContent}>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} style={styles.promoBadge}>
             ✨ Trusted by 500+ Local Governments
@@ -87,7 +86,7 @@ const LandingPage = () => {
           {features.map((f, i) => (
             <motion.div 
               key={i} 
-              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
+              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(79, 70, 229, 0.1)" }}
               style={styles.featureCard}
             >
               <div style={styles.iconBox}>{f.icon}</div>
@@ -104,14 +103,14 @@ const LandingPage = () => {
           {benefits.map((b, i) => (
             <div key={i} style={styles.benefitItem}>
               <CheckCircle2 size={18} color="#4f46e5" />
-              <span style={{ fontSize: "15px", fontWeight: "600", color: "#475569" }}>{b}</span>
+              <span style={{ fontSize: "15px", fontWeight: "600", color: "#1e293b" }}>{b}</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* 5. CTA SECTION */}
-      <section style={{ padding: "100px 24px", boxSizing: "border-box", position: "relative" }}>
+      <section style={{ padding: "100px 24px", boxSizing: "border-box", background: "#f0f7ff" }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -134,7 +133,7 @@ const LandingPage = () => {
       <footer style={styles.footerStyle}>
         <div style={styles.footerContainer}>
           <div style={styles.logoTextSmall}>Civic<span style={{color: '#4f46e5'}}>HRMS</span></div>
-          <div style={{ color: "#94a3b8", fontSize: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "14px" }}>
             © {new Date().getFullYear()} CivicHRMS. Built for professionals.
           </div>
         </div>
@@ -160,59 +159,21 @@ const styles = {
   pageWrapper: { 
     fontFamily: "'Inter', sans-serif", 
     color: "#0f172a", 
-    backgroundColor: "#ffffff", 
+    backgroundColor: "#f8faff", // Very light blue base
     width: "100%", 
     minWidth: "100vw", 
     overflowX: "hidden", 
     margin: 0, 
     padding: 0,
-    boxSizing: "border-box",
-    position: "relative" // Needed for absolute blobs
+    boxSizing: "border-box"
   },
-
-  // NEW BACKGROUND ELEMENTS
-  bgBlob1: {
-    position: "fixed",
-    top: "-10%",
-    right: "-5%",
-    width: "500px",
-    height: "500px",
-    background: "radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(255,255,255,0) 70%)",
-    borderRadius: "50%",
-    zIndex: 0,
-    pointerEvents: "none"
-  },
-  bgBlob2: {
-    position: "fixed",
-    bottom: "10%",
-    left: "-5%",
-    width: "600px",
-    height: "600px",
-    background: "radial-gradient(circle, rgba(147, 51, 234, 0.05) 0%, rgba(255,255,255,0) 70%)",
-    borderRadius: "50%",
-    zIndex: 0,
-    pointerEvents: "none"
-  },
-  bgGrid: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundImage: "radial-gradient(#e2e8f0 0.5px, transparent 0.5px)",
-    backgroundSize: "30px 30px",
-    opacity: 0.4,
-    zIndex: 0,
-    pointerEvents: "none"
-  },
-
   navStyle: { 
     position: "sticky", 
     top: 0, 
     zIndex: 100, 
-    background: "rgba(255, 255, 255, 0.8)", 
+    background: "rgba(248, 250, 255, 0.8)", // Glassmorphism with blue tint
     backdropFilter: "blur(12px)", 
-    borderBottom: "1px solid #f1f5f9",
+    borderBottom: "1px solid #e2e8f0",
     width: "100%",
     boxSizing: "border-box"
   },
@@ -230,18 +191,37 @@ const styles = {
   logoText: { margin: 0, fontSize: "20px", fontWeight: "800", letterSpacing: "-0.5px" },
   
   heroSection: { 
+    position: "relative",
     padding: "120px 20px", 
-    background: "transparent", // Changed to show blobs
+    // Soft Blue Mesh Gradient
+    background: "radial-gradient(circle at 50% 50%, #f0f7ff 0%, #ffffff 100%)", 
     textAlign: "center",
     width: "100%",
     boxSizing: "border-box",
-    position: "relative",
-    zIndex: 1
+    overflow: "hidden"
   },
-  heroContent: { maxWidth: "1000px", margin: "0 auto" },
-  promoBadge: { display: "inline-block", padding: "8px 16px", borderRadius: "100px", background: "#eef2ff", color: "#4338ca", fontSize: "13px", fontWeight: "600", marginBottom: "32px", border: "1px solid #e0e7ff" },
+  bgGlowLeft: {
+    position: "absolute",
+    top: "-10%",
+    left: "-10%",
+    width: "40%",
+    height: "60%",
+    background: "radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%)",
+    zIndex: 0
+  },
+  bgGlowRight: {
+    position: "absolute",
+    bottom: "0%",
+    right: "-5%",
+    width: "40%",
+    height: "60%",
+    background: "radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%)",
+    zIndex: 0
+  },
+  heroContent: { maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1 },
+  promoBadge: { display: "inline-block", padding: "8px 16px", borderRadius: "100px", background: "#e0e7ff", color: "#4338ca", fontSize: "13px", fontWeight: "600", marginBottom: "32px", border: "1px solid #c7d2fe" },
   heroTitle: { fontSize: "clamp(42px, 6vw, 72px)", fontWeight: "900", lineHeight: "1.1", marginBottom: "28px", letterSpacing: "-1.5px" },
-  gradientText: { background: "linear-gradient(90deg, #4f46e5, #9333ea)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" },
+  gradientText: { background: "linear-gradient(90deg, #4f46e5, #0ea5e9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" },
   heroSubtitle: { fontSize: "20px", color: "#475569", maxWidth: "680px", margin: "0 auto", lineHeight: "1.6" },
   heroBtnGroup: { display: "flex", gap: "16px", justifyContent: "center", marginTop: "48px", flexWrap: "wrap" },
   
@@ -250,9 +230,7 @@ const styles = {
     maxWidth: "1200px", 
     margin: "0 auto",
     width: "100%",
-    boxSizing: "border-box",
-    position: "relative",
-    zIndex: 1
+    boxSizing: "border-box"
   },
   sectionHeader: { fontSize: "40px", fontWeight: "800", color: "#1e293b", marginBottom: "16px" },
   sectionSubHeader: { fontSize: "19px", color: "#64748b" },
@@ -267,26 +245,23 @@ const styles = {
   featureCard: { 
     padding: "40px", 
     borderRadius: "24px", 
-    background: "rgba(255,255,255,0.7)", // Slightly transparent
-    backdropFilter: "blur(10px)",
-    border: "1px solid #f1f5f9", 
+    background: "#fff", 
+    border: "1px solid #e2e8f0", // Subtle cool-gray border
     transition: "0.3s ease", 
     cursor: "pointer", 
     textAlign: "left" 
   },
-  iconBox: { width: "52px", height: "52px", background: "#f1f5f9", color: "#4f46e5", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "24px" },
+  iconBox: { width: "52px", height: "52px", background: "#eff6ff", color: "#4f46e5", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "24px" },
   cardTitle: { fontSize: "20px", fontWeight: "700", marginBottom: "12px" },
   cardDesc: { color: "#64748b", lineHeight: "1.7", fontSize: "15px" },
   
   trustSection: { 
     padding: "50px 20px", 
-    background: "rgba(248, 250, 252, 0.8)", 
-    borderTop: "1px solid #f1f5f9", 
-    borderBottom: "1px solid #f1f5f9",
+    background: "#eef2ff", // Soft indigo-blue wash
+    borderTop: "1px solid #e2e8f0", 
+    borderBottom: "1px solid #e2e8f0",
     width: "100%",
-    boxSizing: "border-box",
-    position: "relative",
-    zIndex: 1
+    boxSizing: "border-box"
   },
   benefitGrid: { display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "40px" },
   benefitItem: { display: "flex", alignItems: "center", gap: "10px" },
@@ -299,7 +274,7 @@ const styles = {
     textAlign: "center", 
     maxWidth: "1100px", 
     margin: "0 auto", 
-    boxShadow: "0 20px 50px rgba(0,0,0,0.1)",
+    boxShadow: "0 20px 50px rgba(79, 70, 229, 0.2)",
     boxSizing: "border-box"
   },
   
@@ -311,12 +286,10 @@ const styles = {
   
   footerStyle: { 
     padding: "60px 24px", 
-    background: "transparent", 
-    borderTop: "1px solid #f1f5f9",
+    background: "#f8faff", 
+    borderTop: "1px solid #e2e8f0",
     width: "100%",
-    boxSizing: "border-box",
-    position: "relative",
-    zIndex: 1
+    boxSizing: "border-box"
   },
   footerContainer: { maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" },
   logoTextSmall: { fontSize: "19px", fontWeight: "800" },
