@@ -1,4 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+
+import LandingPage from "./pages/LandingPage";
+
 import Analytics from "./pages/admin/Analytics";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
@@ -10,19 +13,21 @@ import Payroll from "./pages/admin/payroll";
 const App = () => {
   return (
     <Routes>
-      {/* Redirect root to admin dashboard */}
-      <Route path="/" element={<Navigate to="/admin/dashboard" />} />
+      {/* Public Landing Page */}
+      <Route path="/" element={<LandingPage />} />
 
       {/* Admin Routes */}
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="analytics" element={<Analytics />} />
-
         <Route path="attendance" element={<Attendance />} />
         <Route path="leave" element={<Leave />} />
         <Route path="transfers" element={<Transfers />} />
         <Route path="payroll" element={<Payroll />} />
       </Route>
+
+      {/* Optional redirect for unknown routes */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
